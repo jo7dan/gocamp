@@ -6,15 +6,15 @@ from models import Camp, CampArea, Equipment, ResourceCategory, Site, SiteAvaila
 
 
 ENDPOINTS = {
-    'LIST_RESOURCECATEGORY': 'https://washington.goingtocamp.com/api/resourcecategory',
-    'LIST_EQUIPMENT': 'https://washington.goingtocamp.com/api/equipment',
-    'LIST_RESOURCESTATUS': 'https://washington.goingtocamp.com/api/availability/resourcestatus',
-    'MAPDATA': 'https://washington.goingtocamp.com/api/maps/mapdatabyid',
-    'LIST_CAMPGROUNDS': 'https://washington.goingtocamp.com/api/resourcelocation/rootmaps',
-    'SITE_DETAILS': 'https://washington.goingtocamp.com/api/resource/details',
-    # 'CAMP_DETAILS_SINGLE': 'https://washington.goingtocamp.com/api/resourcelocation/locationdetails',
-    'CAMP_DETAILS_ALL': 'https://washington.goingtocamp.com/api/resourcelocation',
-    'DAILY_AVAILABILITY': 'https://washington.goingtocamp.com/api/availability/resourcedailyavailability',
+    'LIST_RESOURCECATEGORY': 'https://wisconsin.goingtocamp.com/api/resourcecategory',
+    'LIST_EQUIPMENT': 'https://wisconsin.goingtocamp.com/api/equipment',
+    'LIST_RESOURCESTATUS': 'https://wisconsin.goingtocamp.com/api/availability/resourcestatus',
+    'MAPDATA': 'https://wisconsin.goingtocamp.com/api/maps/mapdatabyid',
+    'LIST_CAMPGROUNDS': 'https://wisconsin.goingtocamp.com/api/resourcelocation/rootmaps',
+    'SITE_DETAILS': 'https://wisconsin.goingtocamp.com/api/resource/details',
+    # 'CAMP_DETAILS_SINGLE': 'https://wisconsin.goingtocamp.com/api/resourcelocation/locationdetails',
+    'CAMP_DETAILS_ALL': 'https://wisconsin.goingtocamp.com/api/resourcelocation',
+    'DAILY_AVAILABILITY': 'https://wisconsin.goingtocamp.com/api/availability/resourcedailyavailability',
 }
 
 CAMP_DETAILS_BY_LOCATIONID = {}
@@ -41,7 +41,7 @@ def get_reservation_link(party_size, start_date, end_date, camp_area, resource_l
     :return:
     """
     return\
-        'https://washington.goingtocamp.com/create-booking/results?mapId=%s&bookingCategoryId=0&startDate=%s&endDate=%s&isReserving=true&equipmentId=%s&subEquipmentId=%s&partySize=%s&resourceLocationId=%s'\
+        'https://wisconsin.goingtocamp.com/create-booking/results?mapId=%s&bookingCategoryId=0&startDate=%s&endDate=%s&isReserving=true&equipmentId=%s&subEquipmentId=%s&partySize=%s&resourceLocationId=%s'\
         %(camp_area.map_id, start_date.isoformat(), end_date.isoformat(), equipment_id, sub_equipment_id, party_size, resource_location_id)
 
 
