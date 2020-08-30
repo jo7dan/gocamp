@@ -39,13 +39,22 @@ def is_available(site, dates, site_availabilitys, equipment_id_subid):
 
 
 def print_site_availabilitys(site, dates, site_availabilitys, equipment_id_subid):
-    print(site)
+    #print(site)
+
+    printed_site = False
     for i, date in enumerate(dates):
+        
         site_availability_text = 'not available'
         if site_availabilitys[i].availability == 0:
             site_allowed_equipment_text = [(e.category_id, e.subcategory_id) for e in site_availabilitys[i].allowed_equipment]
             site_availability_text = 'AVAILABLE' if equipment_id_subid in site_allowed_equipment_text else 'equipment not allowed'
-        print('  %s %s' % (dates[i], site_availability_text))
+       
+        # do we even want to print this if it is not available?
+        if site_availability_text != 'not available':
+            if not bool(printed_site):
+                print(site)
+                printed_site = True
+            print('  %s %s' % (dates[i], site_availability_text))
 
 
 if __name__ == '__main__':
@@ -81,6 +90,9 @@ if __name__ == '__main__':
 
     # list availability
     equipment_id_subid = (equipment.category_id, equipment.subcategory_id)
+
+    #TODO: if blank, allow to search all availabilities
+    #TODO: allow for comma-seperated list of available sites
     for site, site_availabilitys in list_site_availability(camp_area, start_date, end_date, equipment.subcategory_id).items():
         print_site_availabilitys(site, dates, site_availabilitys, equipment_id_subid)
 
