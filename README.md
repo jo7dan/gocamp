@@ -2,7 +2,7 @@
 
 # GoCamp
 
-Unofficial Python wrapper for the web API at https://washington.goingtocamp.com
+Unofficial Python wrapper for the web API at https://wisconsin.goingtocamp.com
 
 ## Structure
 
@@ -17,7 +17,7 @@ Unofficial Python wrapper for the web API at https://washington.goingtocamp.com
 
 ## Purpose
 
-The web interface at washington.goingtocamp.com has several bugs and
+The web interface at wisconsin.goingtocamp.com has several bugs and
 search limitations, very high latency, and no programmatic access.
 
 Developers wishing to create searches for more complex queries (e.g.
