@@ -4,7 +4,7 @@ from app import *
 
 
 def prompt_int(prompt, default=None, print_selection=False):
-    if default==None:
+    if default is None:
         selection = int(input('%s: ' % prompt))
     else:
         selection = input('%s [%s]: ' % (prompt, default))
@@ -17,7 +17,7 @@ def prompt_int(prompt, default=None, print_selection=False):
 def prompt_collection(prompt, collection, default=None, print_selection=False):
     for i, e in enumerate(collection):
         print('%i: %s' % (i, e))
-    if default==None:
+    if default is None:
         selection = collection[int(input('%s: ' % prompt))]
     else:
         selection = input('%s [%s]: ' % (prompt, default))
