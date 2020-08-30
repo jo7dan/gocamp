@@ -39,7 +39,6 @@ def is_available(site, dates, site_availabilitys, equipment_id_subid):
 
 
 def print_site_availabilitys(site, dates, site_availabilitys, equipment_id_subid):
-    #print(site)
 
     printed_site = False
     for i, date in enumerate(dates):
@@ -72,26 +71,29 @@ if __name__ == '__main__':
     start_date = datetime.datetime(year, start_month, start_day, 7, tzinfo=datetime.timezone.utc)
     end_date = datetime.datetime(year, end_month, end_day, 7, tzinfo=datetime.timezone.utc)
     dates = [(start_date + datetime.timedelta(days=x)).strftime('%y-%b-%d') for x in range(0, (end_date-start_date).days)]
+
     if len(dates) == 0:
         raise Exception("must stay at least 1 night")
 
-    # campsite, cabin, etc... TBD: does this work for non-campsites?
-    resource_category = prompt_collection('SELECT A CATEGORY', list_resource_categorys(), 0, True)
+    # campsite, cabin, etc... TBD: does this work for non-campsites? 
+    #TODO if the category begins 'DELETE' do we delete it?
+    #TODO is '3' always 'campsite'
+    resource_category = prompt_collection('SELECT A CATEGORY', list_resource_categorys(), 3, True)
 
-    # pick tent, RV, etc
+    # pick tent, RV, etc - defaulting to '0' should be a 'Tent'
     equipment = prompt_collection('SELECT EQUIPMENT', list_equipments(), 0, True)
 
     # pick a camp
-    camp = prompt_collection('SELECT A CAMP', list_camps(resource_category.resource_id))
+    camp = prompt_collection('SELECT A CAMP', list_camps(resource_category.resource_id), 0, False)
     print(get_camp_description(camp.resource_location_id))
 
     # pick section of the camp
-    camp_area = prompt_collection('SELECT A CAMP AREA', list_camp_areas(camp, start_date, end_date, equipment.subcategory_id), None, True)
+    camp_area = prompt_collection('SELECT A CAMP AREA', list_camp_areas(camp, start_date, end_date, equipment.subcategory_id), 0, True)
 
     # list availability
     equipment_id_subid = (equipment.category_id, equipment.subcategory_id)
 
-    #TODO: if blank, allow to search all availabilities
+    #TODO: if blank, allow to search all availabilities?
     #TODO: allow for comma-seperated list of available sites
     for site, site_availabilitys in list_site_availability(camp_area, start_date, end_date, equipment.subcategory_id).items():
         print_site_availabilitys(site, dates, site_availabilitys, equipment_id_subid)

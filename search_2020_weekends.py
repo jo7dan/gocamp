@@ -38,6 +38,10 @@ if __name__ == '__main__':
     equipment = list_equipments()[0] #1tent
     party_size = 4
     year = 2020
+    start_month = 9
+    start_day = 1
+    end_month = start_month + 1
+    end_day = start_day + 1
     max_camps = 2
-    search(party_size, year, 6, 15, 5, 28, resource_category, equipment, max_camps)
+    search(party_size, year, start_month, start_day, end_month, end_day, resource_category, equipment, max_camps)
     # search(party_size, year, 5, 26, 6, 28, resource_category, equipment, max_camps)
